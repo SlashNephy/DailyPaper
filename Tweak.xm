@@ -78,7 +78,7 @@ void HBDPUpdateWallpaper(void(^completion)(NSError *error), BOOL onDemand) {
 		}
 	}
 
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+	//dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		isRunning = YES;
 
 		NSError *error = nil;
@@ -93,15 +93,15 @@ void HBDPUpdateWallpaper(void(^completion)(NSError *error), BOOL onDemand) {
 		PLStaticWallpaperImageViewController *wallpaperViewController = [[[PLStaticWallpaperImageViewController alloc] initWithUIImage:image] autorelease];
 		wallpaperViewController.saveWallpaperData = YES;
 
-		uintptr_t address = (uintptr_t)&wallpaperMode;
-		object_setInstanceVariable(wallpaperViewController, "_wallpaperMode", *(PLWallpaperMode **)address);
+		//uintptr_t address = (uintptr_t)&wallpaperMode;
+		//object_setInstanceVariable(wallpaperViewController, "_wallpaperMode", *(PLWallpaperMode **)address);
+		MSHookIvar<PLWallpaperMode>(wallpaperViewController, "_wallpaperMode") = wallpaperMode;
 
 		[wallpaperViewController _savePhoto];
-
-		isRunning = NO;
-
+		
 		completion(nil);
-	});
+		isRunning = NO;
+	//});
 
 	HBDPUpdateWallpaperMetadata();
 }

@@ -1,4 +1,4 @@
-TARGET = iphone:clang:latest:7.0
+ARCHS = arm64
 
 include $(THEOS)/makefiles/common.mk
 
@@ -14,8 +14,4 @@ SUBPROJECTS += prefs weeapp
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
 after-install::
-ifeq ($(RESPRING),0)
-	install.exec "killall Preferences; sleep 0.2; sbopenurl 'prefs:root=DailyPaper'"
-else
-	install.exec spring
-endif
+	install.exec "killall -9 SpringBoard"

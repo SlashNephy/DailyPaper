@@ -3,8 +3,8 @@ Name: DailyPaper
 Depends: mobilesubstrate, ws.hbang.common (>= 1.1)
 Version: 1.1
 Architecture: iphoneos-arm
-Description: Daily wallpapers courtesy of Bing
-Maintainer: HASHBANG Productions <support@hbang.ws>
-Author: HASHBANG Productions <support@hbang.ws>
+Description: [iOS 11-12] Daily wallpapers courtesy of Bing
+Maintainer: Slash Nephy <slash@nephy.jp>
+Author: SlashNephy, HASHBANG Productions <slash@nephy.jp>
 Support: https://www.hbang.ws/faq/
 Section: Tweaks
